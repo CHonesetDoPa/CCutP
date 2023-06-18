@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        CCutP - A Free And Unlimited Clipboard
+    </title>
+
+    <link rel="stylesheet" href="assets/css/loading.css">
+    <link rel="stylesheet" href="assets/css/topbar.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+
+
+
+</head>
+
+<body>
+
+    <div id="loading">
+        <div id="loading_bg">
+            <div class="loader">Loading...</div>
+        </div>
+    </div>
+    <div class="topbar">
+        <ul class="topbar-left">
+            <li>CCutP</li>
+
+        </ul>
+        <ul class="topbar-right">
+            <li><a class="read-a" href="read.html">Read Clipboard </a></li>
+        </ul>
+    </div>
+    <br>
+    <p>
+        Write to Clipboard
+        <label for="content">Content:</label>
+        <br>
+        <textarea class="content-text" id="content" name="content" rows="5" cols="50" maxlength="10000"
+            placeholder="Please Enter Your Content Here."></textarea><br>
+    <span class="counter-style" id="counter">0/10000</span>
+    <br>
+    </p>
+    <br>
+    <p>
+        <label for="password">Password:</label>
+        <br>
+        <input type="password" id="password" name="password">
+        <br><br>
+        <label for="expire">Expires At:</label>
+        <br>
+        <input type="datetime-local" id="expire" name="expire" min="" />
+        <br><br>
+        <button onclick="saveToClipboard()">Save to Clipboard</button>
+    </p>
+</body>
+<footer>
+    This Service and its  <a class="footer-a" href="https://github.com/CHonesetDoPa/CCutP">SourceCode</a> are under CC0 License. <br>
+    Supported By NekoCloud. / Sponsored By <a class="footer-a" href="https://www.cloudflare.com">Cloudflare</a>
+</footer>
+<br>
+<script src="assets/js/dateset.js"></script>
+<script src="assets/js/clipboard.js"></script>
+<script src="assets/js/numcheck.js"></script>
+<script src="assets/js/loading.js"></script>
+
+</html>

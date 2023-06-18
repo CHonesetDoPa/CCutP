@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Clipboard</title>
+</head>
+
+<body>
+    <h1>Online Clipboard</h1>
+
+    <h2>Write to Clipboard</h2>
+
+    <label for="content">Content:</label>
+    <br>
+    <textarea id="content" name="content" rows="5" cols="50"></textarea>
+    <br>
+    <br>
+
+    <label for="password">Password:</label>
+    <br>
+    <input type="password" id="password" name="password">
+    <br>
+    <br>
+
+    <label for="expire">Expires At:</label>
+    <br>
+    <input type="datetime-local" id="expire" name="expire">
+    <br>
+    <br>
+
+ 
+
+    <hr>
+
+    <h2>Read from Clipboard</h2>
+
+    <p>Please enter the ID and password of the clipboard item you wish to read:</p>
+
+    <label for="itemId">ID:</label>
+    <br>
+    <input type="text" id="itemId" name="itemId">
+    <br>
+    <br>
+
+    <label for="itemPassword">Password:</label>
+    <br>
+    <input type="password" id="itemPassword" name="itemPassword">
+    <br>
+    <br>
+
+    <button onclick="loadFromClipboard()">Load from Clipboard</button>
+
+    <br>
+    <br>
+
+    <p id="clipboardContent"></p>
+
+    <script>
+        function saveToClipboard() {
+            const content = document.getElementById('content').value;
+            const password = document.getElementById('password').value;
+            const expire = document.getElementById('expire').value;
+
+            const data = {
+                content: content,
+                password: password,
+                expires_at: expire
+            };
+
+            fetch('/clipboard', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+                .then(response => response.json())
+                .then(data => alert(`Item saved to clipboard. ID: ${data.id}`))
+                .catch(error => console.error(error));
+        }
+
+        function loadFromClipboard() {
+            const itemId = document.getElementById('itemId').value;
+            const password = document.getElementById('itemPassword').value;
+
+            fetch(`/clipboard/${itemId}?password=${password}`)
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        throw new Error('Failed to load clipboard item');
+                    }
+                })
+                .then(data => {
+                    const clipboardContent = document.getElementById('clipboardContent');
+                    clipboardContent.textContent = data.content;
+                })
+                .catch(error => console.error(error));
+        }
+    </script>
+
+</body>
+
+</html>

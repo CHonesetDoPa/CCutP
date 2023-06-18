@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        CCutP - A Free And Unlimited Clipboard
+    </title>
+
+    <link rel="stylesheet" href="assets/css/loading.css">
+    <link rel="stylesheet" href="assets/css/topbar.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+
+
+
+</head>
+
+<body>
+
+    <div id="loading">
+        <div id="loading_bg">
+            <div class="loader">Loading...</div>
+        </div>
+    </div>
+    <div class="topbar">
+        <ul class="topbar-left">
+            <li>CCutP</li>
+
+        </ul>
+        <ul class="topbar-right">
+            <li><a class="read-a" href="..">Write Clipboard </a></li>
+        </ul>
+    </div>
+    <br>
+    <p>
+        Read from Clipboard <br>
+        Please enter the ID and password of the clipboard item you wish to read: <br><br>
+
+        <label for="itemId">ID:</label>
+        <br>
+        <input type="text" id="itemId" name="itemId">
+        <br>
+        <br>
+
+        <label for="itemPassword">Password:</label>
+        <br>
+        <input type="password" id="itemPassword" name="itemPassword">
+        <br>
+        <br>
+
+        <button onclick="loadFromClipboard()">Load from Clipboard</button>
+    </p><br><br>
+    <p>Result Content: <br>
+        <span id="clipboardContent"></span>
+    </p>
+    <br>
+</body>
+<footer>
+    This Service and its  <a class="footer-a" href="https://github.com/CHonesetDoPa/CCutP">SourceCode</a> are under CC0 License. <br>
+    Supported By NekoCloud. / Sponsored By <a class="footer-a" href="https://www.cloudflare.com">Cloudflare</a>
+</footer>
+<br>
+<script src="assets/js/dateset.js"></script>
+<script src="assets/js/clipboard.js"></script>
+<script src="assets/js/numcheck.js"></script>
+<script src="assets/js/loading.js"></script>
+
+</html>
